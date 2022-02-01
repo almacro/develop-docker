@@ -1,0 +1,12 @@
+#!/bin/bash
+
+docker run \
+-it \
+--rm \
+--network jenkins_jenkins \
+-v $HOME/.ssh/jenkins_agent_key:/ssh/id_rsa \
+-v $HOME/.ssh/jenkins_agent_key.pub:/ssh/id_rsa.pub \
+-e "JENKINS_URL=$JENKINS_URL" \
+-e "JENKINS_USER_ID=$JENKINS_USER_ID" \
+-e "JENKINS_API_TOKEN=$JENKINS_API_TOKEN" \
+alfred-thompson/jenkins-ssh-agent:cli $@
